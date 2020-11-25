@@ -12,3 +12,4 @@ cython
 datefinder
 find-job-titles
 pyresparser
+bs4
