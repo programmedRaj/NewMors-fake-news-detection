@@ -1,0 +1,14 @@
+Flask
+flask-mysql
+Werkzeug
+pymysql
+pyjwt
+flask-cors
+jsonpickle
+pdf2image
+pytesseract
+numpy
+cython
+datefinder
+find-job-titles
+pyresparser
