@@ -112,17 +112,18 @@ def home():
     for i in soup1.find_all("li")[start:]:  # 37 manoranjan 42 corona
         try:
             gg = i.find("a")["title"]
-            a = tfidf_vectorizer.transform([gg])
-            # pac.predict(a)[0]
+            if len(i.find("a")["title"]) > 20:
+                a = tfidf_vectorizer.transform([gg])
+                # pac.predict(a)[0]
 
-            ola[uu] = [
-                gg,
-                i.find("a")["href"],
-                pac.predict(a)[0],
-                i.find("img")["data-src"],
-            ]
+                ola.append([
+                    gg,
+                    i.find("a")["href"],
+                    pac.predict(a)[0],
+                    i.find("img")["data-src"],
+                ])
         except:
-            break
+            continue
     response_pickled = jsonpickle.encode(ola)
 
     return Response(response=response_pickled, status=200, mimetype="application/json")
