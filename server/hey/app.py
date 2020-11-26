@@ -119,7 +119,7 @@ def home():
                 ola.append([
                     gg,
                     i.find("a")["href"],
-                    pac.predict(a)[0],
+                    str(pac.predict(a)[0]),
                     i.find("img")["data-src"],
                 ])
         except:
