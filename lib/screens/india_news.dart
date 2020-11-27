@@ -10,12 +10,12 @@ import 'package:newmours/screens/detailed_news.dart';
 import 'package:newmours/screens/entertainment.dart';
 import 'package:newmours/screens/home.dart';
 
-class Entertainment extends StatefulWidget {
+class India extends StatefulWidget {
   @override
-  _EntertainmentState createState() => _EntertainmentState();
+  _IndiaState createState() => _IndiaState();
 }
 
-class _EntertainmentState extends State<Entertainment> {
+class _IndiaState extends State<India> {
   bool isLoaded = false;
   List<String> headLines = [];
   List<String> link = [];
@@ -26,7 +26,21 @@ class _EntertainmentState extends State<Entertainment> {
   void initState() {
     super.initState();
     //testing();
-    getNews('मनोरंजन');
+    getNews('भारत');
+  }
+
+  testing() async {
+    var dio = Dio();
+    print('ent testing');
+    var url = 'http://192.168.43.169:5000/';
+    print('sending req');
+    var resp = await dio.post(
+      url,
+      queryParameters: {
+        "topic": 'कोरोना',
+      },
+    );
+    print(resp);
   }
 
   Future<List> getNews(String params) async {

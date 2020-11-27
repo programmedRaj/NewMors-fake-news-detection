@@ -32,7 +32,7 @@ class _CoronaState extends State<Corona> {
   testing() async {
     var dio = Dio();
     print('ent testing');
-    var url = 'http://192.168.43.182:5000/';
+    var url = 'http://192.168.43.169:5000/';
     print('sending req');
     var resp = await dio.post(
       url,
@@ -44,7 +44,7 @@ class _CoronaState extends State<Corona> {
   }
 
   Future<List> getNews(String params) async {
-    var url = 'http://192.168.43.182:5000/';
+    var url = 'http://192.168.43.169:5000/';
     //'http://10.0.2.2:5000/';
     var resp = await http.post(
       url,
@@ -77,7 +77,7 @@ class _CoronaState extends State<Corona> {
         child: Center(
             child: isLoaded
                 ? ListView.builder(
-                    itemCount: 6,
+                    itemCount: headLines.length,
                     itemBuilder: (context, i) {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),

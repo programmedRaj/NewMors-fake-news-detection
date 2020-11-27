@@ -24,7 +24,7 @@ class _DetailedNewsState extends State<DetailedNews> {
   }
 
   getDetailedNews() async {
-    var url = 'http://192.168.43.182:5000/details';
+    var url = 'http://192.168.43.169:5000/details';
     //'http://10.0.2.2:5000/';
     var resp = await http.post(
       url,

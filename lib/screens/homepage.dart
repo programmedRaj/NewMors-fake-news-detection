@@ -8,6 +8,7 @@ import 'package:dio/dio.dart';
 import 'package:newmours/screens/corona.dart';
 import 'package:newmours/screens/entertainment.dart';
 import 'package:newmours/screens/home.dart';
+import 'package:newmours/screens/india_news.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -32,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<List> getNews(String params) async {
-    var url = 'http://192.168.43.182:5000/';
+    var url = 'http://192.168.43.169:5000/';
     //'http://10.0.2.2:5000/';
     var resp = await http.post(
       url,
@@ -67,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final List _children = [Home(), Entertainment(), Corona()];
+    final List _children = [Home(), Entertainment(), Corona(), India()];
     return DefaultTabController(
       length: 7,
       child: Scaffold(
