@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:newmours/screens/corona.dart';
+import 'package:newmours/screens/detailed_news.dart';
 import 'package:newmours/screens/entertainment.dart';
 import 'package:newmours/screens/home.dart';
 
@@ -24,7 +25,22 @@ class _CoronaState extends State<Corona> {
   @override
   void initState() {
     super.initState();
+    //testing();
     getNews('कोरोना');
+  }
+
+  testing() async {
+    var dio = Dio();
+    print('ent testing');
+    var url = 'http://192.168.43.182:5000/';
+    print('sending req');
+    var resp = await dio.post(
+      url,
+      queryParameters: {
+        "topic": 'कोरोना',
+      },
+    );
+    print(resp);
   }
 
   Future<List> getNews(String params) async {
@@ -65,61 +81,74 @@ class _CoronaState extends State<Corona> {
                     itemBuilder: (context, i) {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Card(
-                          elevation: 10,
-                          child: Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Column(
-                              children: [
-                                Container(
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                          width: 120,
-                                          child: Image.network(imgLink[i])),
-                                      SizedBox(
-                                        width: 8,
-                                      ),
-                                      Container(
-                                        width: 200,
-                                        child: AutoSizeText(
-                                          headLines[i],
-                                          style: TextStyle(fontSize: 12),
-                                          maxLines: 6,
-                                          overflow: TextOverflow.clip,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DetailedNews(
+                                        heading: headLines[i], url: link[i])));
+                          },
+                          child: Card(
+                            elevation: 10,
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                            width: 120,
+                                            child: Image.network(imgLink[i])),
+                                        SizedBox(
+                                          width: 8,
                                         ),
-                                      )
-                                    ],
+                                        Container(
+                                          width: 200,
+                                          child: AutoSizeText(
+                                            headLines[i],
+                                            style: TextStyle(fontSize: 12),
+                                            maxLines: 6,
+                                            overflow: TextOverflow.clip,
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    prediction[i] == 'FAKE'
-                                        ? Container(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 5, vertical: 3),
-                                            color: Colors.red,
-                                            child: Text(
-                                              'Rumour',
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
-                                          )
-                                        : Container(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 5, vertical: 3),
-                                            color: Colors.green,
-                                            child: Text(
-                                              'Real',
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
-                                          )
-                                  ],
-                                )
-                              ],
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      prediction[i] == 'FAKE'
+                                          ? Container(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 5,
+                                                      vertical: 3),
+                                              color: Colors.red,
+                                              child: Text(
+                                                'Rumour',
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              ),
+                                            )
+                                          : Container(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 5,
+                                                      vertical: 3),
+                                              color: Colors.green,
+                                              child: Text(
+                                                'Real',
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              ),
+                                            )
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
