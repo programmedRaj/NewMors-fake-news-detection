@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
       length: 7,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.lightBlue[900],
           centerTitle: true,
           leading: Icon(Icons.person_outline),
           title: Text(
@@ -207,7 +207,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ), */
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.lightBlue[900],
           unselectedLabelStyle:
               TextStyle(color: Colors.blue, decorationColor: Colors.black),
           selectedItemColor: Colors.greenAccent,
@@ -215,7 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
           showUnselectedLabels: true,
           items: [
             BottomNavigationBarItem(
-              backgroundColor: Colors.green,
+              backgroundColor: Colors.lightBlue[900],
               icon: Icon(Icons.search),
               title: Text(
                 'Home',
