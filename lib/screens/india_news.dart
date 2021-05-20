@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:newmours/constants/api_const.dart';
 import 'package:newmours/global_widgets/news_showing_widget.dart';
 import 'dart:convert';
 import 'dart:io';
@@ -9,6 +10,7 @@ import 'package:newmours/screens/corona.dart';
 import 'package:newmours/screens/detailed_news.dart';
 import 'package:newmours/screens/entertainment.dart';
 import 'package:newmours/screens/home.dart';
+import 'package:newmours/utils.dart';
 
 class India extends StatefulWidget {
   @override
@@ -44,7 +46,7 @@ class _IndiaState extends State<India> {
   }
 
   Future<List> getNews(String params) async {
-    var url = 'http://192.168.43.169:5000/';
+    var url = ApiConst.baseUrl;
     //'http://10.0.2.2:5000/';
     var resp = await http.post(
       url,

@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:newmours/constants/api_const.dart';
 import 'package:newmours/global_widgets/news_showing_widget.dart';
 import 'dart:convert';
 import 'dart:io';
@@ -9,6 +10,7 @@ import 'package:newmours/screens/corona.dart';
 import 'package:newmours/screens/detailed_news.dart';
 import 'package:newmours/screens/entertainment.dart';
 import 'package:newmours/screens/home.dart';
+import 'package:newmours/utils.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -29,23 +31,9 @@ class _HomeState extends State<Home> {
     getNews('होम');
   }
 
-  testing() async {
-    var dio = Dio();
-    print('ent testing');
-    var url = 'http://192.168.43.169:5000/';
-    print('sending req');
-    var resp = await dio.post(
-      url,
-      queryParameters: {
-        "topic": 'कोरोना',
-      },
-    );
-    print(resp);
-  }
-
   Future<List> getNews(String params) async {
-    var url = 'http://192.168.43.169:5000/';
-    //'http://10.0.2.2:5000/';
+    var url = ApiConst.baseUrl;
+
     var resp = await http.post(
       url,
       body: {
@@ -71,7 +59,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    print('corona');
+    print('home');
     return Container(
       child: Container(
         child: Center(

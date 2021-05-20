@@ -2,6 +2,8 @@ import 'dart:ui';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:newmours/constants/api_const.dart';
+import 'package:newmours/utils.dart';
 
 class DetailedNews extends StatefulWidget {
   final String heading;
@@ -24,7 +26,7 @@ class _DetailedNewsState extends State<DetailedNews> {
   }
 
   getDetailedNews() async {
-    var url = 'http://192.168.43.169:5000/details';
+    var url = ApiConst.baseUrl + 'details';
     //'http://10.0.2.2:5000/';
     var resp = await http.post(
       url,
@@ -45,7 +47,7 @@ class _DetailedNewsState extends State<DetailedNews> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.lightBlue[900],
         title: Text('NewMours'),
       ),
       body: SafeArea(
